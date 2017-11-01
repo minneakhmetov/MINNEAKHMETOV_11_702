@@ -20,18 +20,19 @@ public class ArrayList {
 
 
     void deleteNumber(int index) {
-        for (int i=0; i != count - index; i++) {
+        for (int i = 0; i != count - index; i++) {
             array[index + i] = array[index + 1 + i];
         }
         count--;
 
     }
 
-    void pasteNumber(int number, int index){
-        ++count; int k = 0;
-        for (int i=count; i > index; i--) {
-            k= array[i-1];
-            array[i-1] = array[i];
+    void pasteNumber(int number, int index) {
+        ++count;
+        int k = 0;
+        for (int i = count; i > index; i--) {
+            k = array[i - 1];
+            array[i - 1] = array[i];
             array[i] = k;
         }
         array[index] = number;
