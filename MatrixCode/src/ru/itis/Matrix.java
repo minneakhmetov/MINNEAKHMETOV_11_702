@@ -15,4 +15,6 @@ public interface Matrix {
     void print();
     int sizeX(int x);
     int sizeY(int y);
+    int sizeXMax();
+    int sizeYMax();
 }
