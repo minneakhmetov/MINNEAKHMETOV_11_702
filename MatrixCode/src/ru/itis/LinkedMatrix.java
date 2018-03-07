@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class LinkedMatrix implements Matrix {
 
     // ссылка на первый элемент списка
-    private Node head;
+    Node head;
     // ссылка на последний элемент списка
-    private Node tail;
+    Node tail;
 
     public LinkedMatrix() {
         this.head = null;
@@ -27,7 +27,7 @@ public class LinkedMatrix implements Matrix {
         int[][] newInt = new int[sizeXMax()][sizeYMax()];
         Node newNode = this.head;
         while (newNode != null) {
-            newInt[newNode.getY()][newNode.getX()] = newNode.getValue();
+            newInt[newNode.getX()][newNode.getY()] = newNode.getValue();
             newNode = newNode.next;
         }
         return newInt;
@@ -90,12 +90,18 @@ public class LinkedMatrix implements Matrix {
 
     public ArrayList minList() {
         ArrayList<Integer> list = new ArrayList<Integer>();
+        ArrayList<Integer> ints = new ArrayList<>();
+
         Node newNode = this.head;
         while (newNode != null) {
-            if (!list.contains(min(newNode.getX())))
+
+            if (!ints.contains(newNode.getX())) {
                 list.add(min(newNode.getX()));
+                ints.add(newNode.getX());
+            }
             newNode = newNode.next;
         }
+
         return list;
     }
 

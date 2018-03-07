@@ -6,11 +6,17 @@ public class Main {
 
     public static void main(String[] args) {
 		LinkedMatrix matrix = new LinkedMatrix();
-		matrix.insert(0, 0, 2);
-		matrix.insert(0, 1, 1);
-		//matrix.insert(0,2, 5);
-		matrix.insert(1, 0, 3);
-		matrix.insert(1 ,1, 4);
+		matrix.insert(0, 0, 1);
+		matrix.insert(1, 1, 2);
+		matrix.insert(0, 1, 3);
+		matrix.insert(1, 0, 4);
+		matrix.sumCols(0,1);
+		//matrix.insert(1 ,1, 1);
+		//matrix.insert(2,0,1);
+		//matrix.insert(2, 1, 1);
+
+
+
 
 		matrix.print();
 		//System.out.println("");
@@ -24,10 +30,10 @@ public class Main {
 //			}
 //			System.out.println("");
 //		}
-		ArrayList<Integer> list = matrix.minList();
+		//ArrayList<Integer> list = matrix.minList();
 
-			for (int i = 0; i < list.size(); i++)
-				System.out.println(list.get(i));
+		//	for (int i = 0; i < list.size(); i++)
+		//		System.out.println(list.get(i));
 
 		//matrix.transp();
 		//matrix.transp();
@@ -44,7 +50,6 @@ public class Main {
 		//int[][] matrix = {{1,2}, {3,4}};
 		//	linkedMatrix = linkedMatrix.MatrixCode(matrix);
 		//matrix.print();
-
 
 	}
 }
