@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Converter {
-
+    RandomCreator creator = new RandomCreator();
     //класс, конвертирующий данные из файла в массив или коллекцию
 
     public int[] convertArray(File file){
-        int[] ints = new int[Maximum.MAXIMUM_FILES];
+        int[] ints = new int[creator.size(file)];
         for (int i = 0; i < ints.length; i++)
             ints[i] = 0;
 
@@ -38,7 +38,7 @@ public class Converter {
 
     public List<Integer> convertList(File file){
         List<Integer> list = new ArrayList<>();
-        for(int i = 0; i < Maximum.MAXIMUM_NUMBERS; i++)
+        for(int i = 0; i < creator.size(file); i++)
             list.add(0);
 
         try(FileReader reader = new FileReader(file))

@@ -18,13 +18,14 @@ public class Main {
         Writer writer = new Writer();
         Sorter sorter = new Sorter();
 
-        int[][] dataArrays = new int[Maximum.MAXIMUM_FILES][Maximum.MAXIMUM_NUMBERS];
+        int[][] dataArrays = new int[Maximum.MAXIMUM_FILES][];
         String path = new File("").getAbsolutePath();
         //Сортировка массива
         long time = System.currentTimeMillis();
         for (int i = 0; i < dataArrays.length; i++) {
             String filePath = "\\file" + String.valueOf(i) + ".txt";
             File newFile = new File(path + "\\files" + filePath);
+            //dataArrays[i] = new int[randomCreator.size(newFile)];
             dataArrays[i] = converter.convertArray(newFile);
             sorter.sort(dataArrays[i]);
             writer.writeArray(dataArrays[i], newFile);
