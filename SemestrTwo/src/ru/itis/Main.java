@@ -20,6 +20,7 @@ public class Main {
 
         int[][] dataArrays = new int[Maximum.MAXIMUM_FILES][];
         String path = new File("").getAbsolutePath();
+        int numCount = 0;
         //Сортировка массива
         long time = System.currentTimeMillis();
         for (int i = 0; i < dataArrays.length; i++) {
@@ -29,9 +30,11 @@ public class Main {
             dataArrays[i] = converter.convertArray(newFile);
             sorter.sort(dataArrays[i]);
             writer.writeArray(dataArrays[i], newFile);
+            numCount += randomCreator.size(newFile);
         }
         System.out.println("Затрачено времени " + (System.currentTimeMillis() - time) + " миллисекунд.");
         System.out.println("Количество итераций " + sorter.getIteration());
+        System.out.println("Количество чисел " + numCount);
 
 
         //Сортировка коллекции
