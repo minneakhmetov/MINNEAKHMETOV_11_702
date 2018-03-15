@@ -1,9 +1,7 @@
 package ru.itis;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.util.Scanner;
 
 public class GraphData {
 
@@ -11,7 +9,7 @@ public class GraphData {
     File iteration = new File(path + "\\iterationData.txt");
     File time = new File(path + "\\time.txt");
 
-    public void writeIteration (int i){
+    public void writeIteration(int i) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(iteration, true))) {
             writer.write(String.valueOf(i));
             writer.newLine();
@@ -21,7 +19,7 @@ public class GraphData {
         }
     }
 
-    public void writeTime(long millis){
+    public void writeTime(long millis) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(time, true))) {
             writer.write(String.valueOf(millis));
             writer.newLine();
@@ -29,7 +27,28 @@ public class GraphData {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
-
     }
 
+    public long[] reader(File file) {
+        long[] array = new long[Maximum.MAXIMUM_FILES];
+        try(FileReader reader = new FileReader(file))
+        {
+            // читаем посимвольно
+            int c;
+            int i = 0;
+            while((c=reader.read())!=-1){
+                if (c >= '0' & c <= '9'){
+                    array[i] *= 10;
+                    array[i] += (c - '0');
+                }
+                if (c == '\r')
+                    i++;
+            }
+        }
+        catch(IOException ex){
+
+            System.out.println(ex.getMessage());
+        }
+        return array;
+    }
 }

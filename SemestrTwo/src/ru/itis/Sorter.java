@@ -9,6 +9,8 @@ public class Sorter {
      GraphData dater = new GraphData();
 
     public void sort(int[] a) {
+        long time = System.nanoTime();
+        iteration = 0;
         int maxVal = 0;
 
         for (int i = 0; i < a.length; i++)
@@ -33,10 +35,12 @@ public class Sorter {
             }
         }
         dater.writeIteration(iteration);
-        iteration = 0;
+        dater.writeTime(System.nanoTime() - time);
     }
 
     public void sort(List<Integer> list) {
+        long time = System.nanoTime();
+        iteration = 0;
         int maxVal = 0;
 
         for (int i = 0; i < list.size(); i++)
@@ -61,7 +65,7 @@ public class Sorter {
             }
         }
         dater.writeIteration(iteration);
-        iteration = 0;
+        dater.writeTime(System.nanoTime() - time);
     }
 
     public int getIteration() {

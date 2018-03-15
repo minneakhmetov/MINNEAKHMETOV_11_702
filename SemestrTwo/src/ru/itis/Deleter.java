@@ -13,7 +13,7 @@ public class Deleter {
             File newFile = new File(this.path + "\\files" + path);
             newFile.delete();
         }
-        File iteration = new File(path + "\\graphData\\iteration.txt");
+        File iteration = new File(path + "\\graphData\\iterationData.txt");
         File time = new File(path + "\\graphData\\time.txt");
         iteration.delete();
         time.delete();

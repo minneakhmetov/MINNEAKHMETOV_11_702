@@ -1,10 +1,15 @@
 package ru.itis;
 
-import com.sun.corba.se.impl.orbutil.graph.Graph;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
+import javafx.stage.Stage;
 
 import java.io.File;
 
-public class Main {
+public class Graphs extends Application {
 
     public static void main(String[] args) {
         Deleter deleter = new Deleter();
@@ -39,25 +44,45 @@ public class Main {
         }
         System.out.println("Затрачено времени " + (System.currentTimeMillis() - time) + " миллисекунд.");
         System.out.println("Количество чисел " + numCount);
-        //graph.main();
+        launch(args);
+    }
 
 
-        //Сортировка коллекции
-//        List[] dataLists = new List[Maximum.MAXIMUM_FILES];
-//        long time = System.currentTimeMillis();
-//        for (int i = 0; i < dataLists.length; i++){
-//            String filePath = "\\file" + String.valueOf(i) + ".txt";
-//            File newFile = new File(path + "\\files" + filePath);
-//            dataLists[i] = converter.convertList(newFile);
-//            long timeBefore = System.nanoTime();
-//            int iteration = sorter.sort(dataLists[i]);
-//            dater.writeTime(System.nanoTime() - timeBefore);
-//            dater.writeIteration(iteration);
-//            writer.writeList(dataLists[i], newFile);
-//        }
-//
-//        System.out.println("Затрачено времени " + (System.currentTimeMillis() - time) + " миллисекунд.");
-//        System.out.println("Количество чисел " + numCount); System.out.println("Количество чисел " + numCount);
+    @Override
+    public void start(Stage stage) {
 
+        String path = new File("").getAbsolutePath() + "\\graphData";
+        File iteration = new File(path + "\\iterationData.txt");
+        File time = new File(path + "\\time.txt");
+        GraphData dater = new GraphData();
+
+
+
+        stage.setTitle("Line Chart Sample");
+        //defining the axes
+        final NumberAxis xAxis = new NumberAxis();
+        final NumberAxis yAxis = new NumberAxis();
+        xAxis.setLabel("Number of Month");
+        //creating the chart
+        final LineChart<Number,Number> lineChart =
+                new LineChart<Number,Number>(xAxis,yAxis);
+
+        lineChart.setTitle("Stock Monitoring, 2010");
+        //defining a series
+        XYChart.Series series = new XYChart.Series();
+        series.setName("My portfolio");
+        //populating the series with data
+
+        long[] iterations = dater.reader(iteration);
+        long[] times = dater.reader(time);
+
+        for (int i = 0; i < Maximum.MAXIMUM_FILES; i++)
+            series.getData().add(new XYChart.Data(iterations[i], times[i]));
+
+        Scene scene  = new Scene(lineChart,800,600);
+        lineChart.getData().add(series);
+
+        stage.setScene(scene);
+        stage.show();
     }
 }
