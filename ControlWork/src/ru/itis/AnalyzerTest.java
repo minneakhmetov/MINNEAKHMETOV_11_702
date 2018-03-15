@@ -96,11 +96,6 @@ public class AnalyzerTest {
         analyzer.analyze(string);
     }
 
-    @Test(expected = SyntaxException.class)
-    public void identificatorPlusNumber() {
-        String string = "A1:=B1+123;";
-        analyzer.analyze(string);
-    }
 
     @Test(expected = SyntaxException.class)
     public void withoutDotWithComma(){

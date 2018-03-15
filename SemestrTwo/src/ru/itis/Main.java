@@ -1,11 +1,8 @@
 package ru.itis;
 
 import java.io.File;
-import java.util.List;
-
 
 public class Main {
-
 
     public static void main(String[] args) {
         Deleter deleter = new Deleter();
@@ -17,6 +14,7 @@ public class Main {
         Converter converter = new Converter();
         Writer writer = new Writer();
         Sorter sorter = new Sorter();
+        GraphData dater = new GraphData();
 
         int[][] dataArrays = new int[Maximum.MAXIMUM_FILES][];
         String path = new File("").getAbsolutePath();
@@ -28,12 +26,14 @@ public class Main {
             File newFile = new File(path + "\\files" + filePath);
             //dataArrays[i] = new int[randomCreator.size(newFile)];
             dataArrays[i] = converter.convertArray(newFile);
+            long timeBefore = System.nanoTime();
             sorter.sort(dataArrays[i]);
+            dater.writeTime(System.nanoTime() - timeBefore);
             writer.writeArray(dataArrays[i], newFile);
             numCount += randomCreator.size(newFile);
         }
         System.out.println("Затрачено времени " + (System.currentTimeMillis() - time) + " миллисекунд.");
-        System.out.println("Количество итераций " + sorter.getIteration());
+        //System.out.println("Количество итераций " + sorter.getIteration());
         System.out.println("Количество чисел " + numCount);
 
 

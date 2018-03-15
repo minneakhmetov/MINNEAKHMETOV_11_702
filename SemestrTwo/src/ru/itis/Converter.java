@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Converter {
-    RandomCreator creator = new RandomCreator();
+    private RandomCreator creator = new RandomCreator();
     //класс, конвертирующий данные из файла в массив или коллекцию
 
     public int[] convertArray(File file){

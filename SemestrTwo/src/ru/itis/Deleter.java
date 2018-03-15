@@ -3,7 +3,7 @@ package ru.itis;
 import java.io.File;
 
 public class Deleter {
-    String path = new File("").getAbsolutePath();
+    private String path = new File("").getAbsolutePath();
 
     //класс, удаляющий файлы
 
@@ -13,5 +13,9 @@ public class Deleter {
             File newFile = new File(this.path + "\\files" + path);
             newFile.delete();
         }
+        File iteration = new File(path + "\\graphData\\iteration.txt");
+        File time = new File(path + "\\graphData\\time.txt");
+        iteration.delete();
+        time.delete();
     }
 }

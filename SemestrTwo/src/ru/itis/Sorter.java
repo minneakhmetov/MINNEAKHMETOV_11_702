@@ -6,6 +6,7 @@ public class Sorter {
     //класс, сортирующий данные
 
     int iteration = 0;
+     GraphData dater = new GraphData();
 
     public void sort(int[] a) {
         int maxVal = 0;
@@ -31,6 +32,8 @@ public class Sorter {
                 iteration++;
             }
         }
+        dater.writeIteration(iteration);
+        iteration = 0;
     }
 
     public void sort(List<Integer> list) {
@@ -57,6 +60,8 @@ public class Sorter {
                 iteration++;
             }
         }
+        dater.writeIteration(iteration);
+        iteration = 0;
     }
 
     public int getIteration() {

@@ -8,8 +8,6 @@ import java.util.List;
 public class Writer {
 
     //класс, перезаписывающий в файл отсортированные данные
-    String path = new File("").getAbsolutePath();
-
     public void writeArray(int[] array, File file) {
         try (FileWriter writer = new FileWriter(file, false)) {
             String text = "";

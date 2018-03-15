@@ -10,8 +10,8 @@ public class RandomCreator {
 
     //класс, создаваемый файлы со случайными числами
 
-    String path = new File("").getAbsolutePath();
-    Random random = new Random();
+    private String path = new File("").getAbsolutePath();
+    private Random random = new Random();
     //количесвво создаваемый чисел в файле
     //int numbers = random.nextInt(101);
 
@@ -23,7 +23,7 @@ public class RandomCreator {
             File newFile = new File(this.path + "\\files" + path);
             try (FileWriter writer = new FileWriter(newFile, false)) {
                 String text = "";
-                int numbers = random.nextInt(101);
+                int numbers = 100 + random.nextInt(10001);
                 for (int j = 0; j < numbers; j++)
                     text += String.valueOf(random.nextInt(100)) + " ";
                 writer.write(text);

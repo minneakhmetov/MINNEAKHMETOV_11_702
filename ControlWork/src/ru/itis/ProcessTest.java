@@ -21,7 +21,6 @@ public class ProcessTest {
 
     }
 
-
     @Test
     public void plus(){
         listActual.add("A3:=A1+A2");
