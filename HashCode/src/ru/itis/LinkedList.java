@@ -61,8 +61,10 @@ public class LinkedList<K, V> implements List<K, V> {
     public int size(){
         int count = 0;
         Node newNode = this.head;
-        while (newNode != null)
+        while (newNode != null){
             count++;
+            newNode = newNode.next;
+        }
         return count;
     }
 }
