@@ -66,6 +66,7 @@ public class Sorter {
         }
         dater.writeIteration(iteration);
         dater.writeTime(System.nanoTime() - time);
+
     }
 
     public int getIteration() {

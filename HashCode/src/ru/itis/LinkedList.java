@@ -1,73 +1,32 @@
 package ru.itis;
 
-import java.util.Iterator;
+public class LinkedList<K, V> implements List<K, V> {
 
-/**
- * 13.02.2018
- * LinkedList
- *
- * @author Sidikov Marsel (First Software Engineering Platform)
- * @version v1.0
- */
-public class LinkedList<T> implements List<T> {
+    Node head;
+    Node tail;
 
-    // TODO: реализовать
-    @Override
-    public Iterator<T> iterator() {
-        return null;
-    }
-
-    private class Node {
-        T value;
-        Node next;
-
-        Node(T value) {
-            this.value = value;
-        }
-    }
-    // ссылка на первый элемент списка
-    private Node head;
-    // ссылка на последний элемент списка
-    private Node tail;
-
-    private int count;
 
     public LinkedList() {
         this.head = null;
         this.tail = null;
-        this.count = 0;
     }
 
-    @Override
-    public T get(int index) {
-        if (index < count) {
-            Node current = head;
-            for (int i = 0; i < index; i++) {
-                current = current.next;
-            }
-            return current.value;
+    class Node {
+        K key;
+        V value;
+        Node next;
+
+        Node(K key, V val) {
+            this.key = key;
+            this.value = val;
         }
-        return null;
     }
 
-    @Override
-    public void addToBegin(T object) {
-        Node newNode = new Node(object);
 
-        if (head == null) {
-            head = newNode;
-            tail = newNode;
-        } else {
-            newNode.next = head;
-            head = newNode;
-        }
-
-        count++;
-    }
 
     @Override
-    public void add(T element) {
-        Node newNode = new Node(element);
+    public void add(K key, V value) {
+        Node newNode = new Node(key, value);
         if (head == null) {
             head  = newNode;
             tail = newNode;
@@ -75,31 +34,35 @@ public class LinkedList<T> implements List<T> {
             tail.next = newNode;
             tail = newNode;
         }
-        count++;
     }
 
     @Override
-    public int size() {
-        return count;
-    }
+    public V get(K key) {
+        Node newNode = this.head;
 
-    @Override
-    public void remove(T element) {
-
-    }
-
-    @Override
-    public boolean contains(T element) {
-        return false;
-    }
-
-    public static <E extends Comparable<E>> LinkedList<E> merge(LinkedList<E> aList,
-                                                                LinkedList<E> bList) {
-        LinkedList<E> result = new LinkedList<>();
-
-        Iterator<E> aIterator = aList.iterator();
-        Iterator<E> bIterator = bList.iterator();
-
+        while (newNode != null) {
+            if (newNode.key.equals(key))
+                return newNode.value;
+            newNode = newNode.next;
+        }
         return null;
+    }
+
+    public Node get(int index){
+        int i = 0;
+        Node newNode = head;
+        while (i < index){
+            newNode = newNode.next;
+            i++;
+        }
+        return newNode;
+    }
+
+    public int size(){
+        int count = 0;
+        Node newNode = this.head;
+        while (newNode != null)
+            count++;
+        return count;
     }
 }

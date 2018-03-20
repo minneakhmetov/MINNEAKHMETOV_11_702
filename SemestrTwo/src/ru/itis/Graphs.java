@@ -41,9 +41,11 @@ public class Graphs extends Application {
             //dater.writeIteration(iteration);
             writer.writeArray(dataArrays[i], newFile);
             numCount += randomCreator.size(newFile);
+            dater.writeCount(newFile);
         }
         System.out.println("Затрачено времени " + (System.currentTimeMillis() - time) + " миллисекунд.");
         System.out.println("Количество чисел " + numCount);
+
         launch(args);
     }
 

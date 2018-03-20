@@ -8,6 +8,8 @@ public class GraphData {
     private String path = new File("").getAbsolutePath() + "\\graphData";
     File iteration = new File(path + "\\iterationData.txt");
     File time = new File(path + "\\time.txt");
+    File countNumbers = new File(path + "\\countNumbers.txt");
+    RandomCreator creator = new RandomCreator();
 
     public void writeIteration(int i) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(iteration, true))) {
@@ -22,6 +24,16 @@ public class GraphData {
     public void writeTime(long millis) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(time, true))) {
             writer.write(String.valueOf(millis));
+            writer.newLine();
+            writer.flush();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public void writeCount(File file){
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(countNumbers, true))) {
+            writer.write(String.valueOf(creator.size(file)));
             writer.newLine();
             writer.flush();
         } catch (IOException ex) {

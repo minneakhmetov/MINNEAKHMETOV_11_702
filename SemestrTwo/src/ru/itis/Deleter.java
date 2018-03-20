@@ -15,7 +15,10 @@ public class Deleter {
         }
         File iteration = new File(path + "\\graphData\\iterationData.txt");
         File time = new File(path + "\\graphData\\time.txt");
+        File countNumbers = new File(path + "\\graphData\\countNumbers.txt");
         iteration.delete();
         time.delete();
+        countNumbers.delete();
     }
+
 }
