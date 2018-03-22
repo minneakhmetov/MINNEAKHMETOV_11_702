@@ -56,6 +56,7 @@ public class Graphs extends Application {
         String path = new File("").getAbsolutePath() + "\\graphData";
         File iteration = new File(path + "\\iterationData.txt");
         File time = new File(path + "\\time.txt");
+        File countNumbers = new File(path + "\\countNumbers.txt");
         GraphData dater = new GraphData();
 
 
@@ -69,22 +70,36 @@ public class Graphs extends Application {
         final LineChart<Number,Number> lineChart =
                 new LineChart<Number,Number>(xAxis,yAxis);
 
+        final LineChart<Number,Number> lineChart2 =
+                new LineChart<Number,Number>(xAxis,yAxis);
+
         lineChart.setTitle("Stock Monitoring, 2010");
         //defining a series
         XYChart.Series series = new XYChart.Series();
+        XYChart.Series series2 = new XYChart.Series();
         series.setName("My portfolio");
         //populating the series with data
 
         long[] iterations = dater.reader(iteration);
         long[] times = dater.reader(time);
+        long[] countNumberss = dater.reader(countNumbers);
 
         for (int i = 0; i < Maximum.MAXIMUM_FILES; i++)
-            series.getData().add(new XYChart.Data(iterations[i], times[i]));
+            series.getData().add(new XYChart.Data(iterations[i], countNumberss[i]));
+
+        for (int i = 0; i < Maximum.MAXIMUM_FILES; i++)
+            series2.getData().add(new XYChart.Data(times[i], countNumberss[i]));
+
 
         Scene scene  = new Scene(lineChart,800,600);
+        Scene scene2  = new Scene(lineChart2,800,600);
         lineChart.getData().add(series);
+        lineChart2.getData().add(series2);
 
         stage.setScene(scene);
+        stage.show();
+        stage.setScene(scene2);
+
         stage.show();
     }
 }
