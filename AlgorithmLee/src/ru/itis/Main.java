@@ -1,5 +1,6 @@
 package ru.itis;
 
+
 public class Main {
     static final int W = 5;         // ширина рабочего поля
     static final int H = 5;         // высота рабочего поля

@@ -65,13 +65,15 @@ public class Graphs extends Application {
         //defining the axes
         final NumberAxis xAxis = new NumberAxis();
         final NumberAxis yAxis = new NumberAxis();
+        final NumberAxis xAxis1 = new NumberAxis();
+        final NumberAxis yAxis2 = new NumberAxis();
         xAxis.setLabel("Number of Month");
         //creating the chart
         final LineChart<Number,Number> lineChart =
                 new LineChart<Number,Number>(xAxis,yAxis);
 
         final LineChart<Number,Number> lineChart2 =
-                new LineChart<Number,Number>(xAxis,yAxis);
+                new LineChart<Number,Number>(xAxis1,yAxis2);
 
         lineChart.setTitle("Stock Monitoring, 2010");
         //defining a series
@@ -98,8 +100,8 @@ public class Graphs extends Application {
 
         stage.setScene(scene);
         stage.show();
-        stage.setScene(scene2);
+        //stage.setScene(scene2);
 
-        stage.show();
+        //stage.show();
     }
 }
