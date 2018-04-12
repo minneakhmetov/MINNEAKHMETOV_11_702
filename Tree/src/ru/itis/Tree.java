@@ -13,5 +13,6 @@ public interface Tree<T extends Comparable<T>> {
     void print();
     boolean contains(T value);
     void printByLevels();
+    void printByLevels2();
     boolean isBst();
 }

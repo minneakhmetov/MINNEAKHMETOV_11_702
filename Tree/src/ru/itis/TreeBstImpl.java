@@ -172,15 +172,29 @@ public class TreeBstImpl<T extends Comparable<T>> implements Tree<T> {
         return arrayList;
     }
 
-    public void printByLevels2(){
-        System.out.println(root.value);
-        printByLevels(root);
+    ArrayList<ArrayList<T>> levels;
 
+    @Override
+    public void printByLevels2() {
+        levels =  new ArrayList<>();
+        levels(root, 0);
+        for (int i = 0; i < levels.size(); i++) {
+            String sLevel = "";
+            for (int j = 0; j < levels.get(i).size(); j++) {
+                sLevel += String.valueOf(levels.get(i).get(j)) + " ";
+            }
+            System.out.println(sLevel);
+        }
     }
-    public void printByLevels2(Node node){
-        System.out.println(node.value);
-        printByLevels(node.);
 
+    private void levels(Node node, int level) {
+        if (node != null) {
+            if (!levels.contains(level)) levels.add(new ArrayList<T>());
+            levels.get(level).add(node.value);
+            level++;
+            levels(node.left, level);
+            levels(node.right, level);
+        }
     }
 
 
