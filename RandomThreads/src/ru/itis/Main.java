@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Random rnd = new Random(System.currentTimeMillis());
         Scanner scanner = new Scanner(System.in);
 
@@ -18,7 +18,7 @@ public class Main {
         var sum = 0;
         var time = System.nanoTime();
 
-        for(int i = 0; i < array.length; i++){
+        for (int i = 0; i < array.length; i++) {
             array[i] = rnd.nextInt(1001);
             sum += array[i];
         }
@@ -29,29 +29,35 @@ public class Main {
         int arrays[][] = new int[k][];
 
         for (int i = 0; i < arrays.length; i++)
-            arrays[i] = new int[n/k];
-        arrays[k-1] = new int[n/k + n%k];
+            arrays[i] = new int[n / k];
+        arrays[k - 1] = new int[n / k + n % k];
 
         var position = 0;
 
-        for (int i = 0; i < arrays.length; i++){
-            for(int j = 0; j < arrays[i].length; j++) {
+        for (int i = 0; i < arrays.length; i++) {
+            for (int j = 0; j < arrays[i].length; j++) {
                 arrays[i][j] = array[position];
                 position++;
             }
         }
 
+
         time = System.nanoTime();
         NewThread threads[] = new NewThread[k];
 
-        for(int i = 0; i < threads.length; i++){
+        for (int i = 0; i < threads.length; i++) {
             threads[i] = new NewThread(arrays[i]);
-            threads[i].run();
+            threads[i].start();
         }
+
+        //int s = 1000;
+
+        //Thread.sleep(s);
 
         sum = 0;
 
-        for(int i = 0; i < threads.length; i++){
+        for (int i = 0; i < threads.length; i++) {
+            threads[i].join();
             sum += threads[i].getSum();
         }
 
