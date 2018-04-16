@@ -38,6 +38,7 @@ public class Sorter {
         dater.writeTime(System.nanoTime() - time);
     }
 
+
     public void sort(List<Integer> list) {
         long time = System.nanoTime();
         iteration = 0;
