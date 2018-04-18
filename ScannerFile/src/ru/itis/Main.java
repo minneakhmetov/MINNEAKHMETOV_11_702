@@ -16,5 +16,8 @@ public class Main {
         for (int i = 0; i < files.length; i++)
             System.out.println(files[i]);
 
+        File file1 = new File("C:\\Users\\razil\\Desktop\\lox.txt");
+        file1.delete();
+
     }
 }

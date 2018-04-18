@@ -5,14 +5,9 @@ public class Hash<K, V> {
 
     LinkedList<K, V>[] list = new LinkedList[size];
 
-    public Hash(){
-
-    }
-
-
     V get(K key) {
         int index = hash(key);
-        if (list[index].size() == 1){
+        if (list[index].size() == 1 & list[index].get(0).hashCode() == key.hashCode()){
             return list[index].get(0).value;
         }
         for (int i = 0; i < list[index].size(); i++){
@@ -32,7 +27,7 @@ public class Hash<K, V> {
         } else {
             for (int i = 0; i < list[remain].size(); i++) {
                 if (list[remain].get(i).key.hashCode() == key.hashCode() && (list[remain].get(i).key.equals(key))) {
-                    list[remain].add(key, value);
+                    list[remain].get(i).value = value;
                     return;
                 }
             }
@@ -43,6 +38,7 @@ public class Hash<K, V> {
     public int hash(K key){
         return Math.abs(key.hashCode() % size);
     }
+
 
 
 }
