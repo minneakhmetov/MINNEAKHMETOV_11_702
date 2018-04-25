@@ -12,6 +12,7 @@ public class Hash<K, V> implements Map<K, V> {
             this.key = key;
             this.value = value;
         }
+
         private K key;
         private V value;
         Node<K, V> next;
@@ -45,6 +46,15 @@ public class Hash<K, V> implements Map<K, V> {
         if (nodes[index] == null)
             nodes[index] = new Node<>(key, value);
         else {
+            Node<K, V> newNode = nodes[index];
+            while (newNode != null) {
+                if (newNode.key.equals(key) && newNode.key.hashCode() == key.hashCode()) {
+                    newNode.key = key;
+                    newNode.value = value;
+                    return;
+                }
+                newNode = newNode.next;
+            }
             Node<K, V> node = nodes[index];
             while (true) {
                 if (node.next != null)
@@ -57,3 +67,4 @@ public class Hash<K, V> implements Map<K, V> {
         }
     }
 }
+
