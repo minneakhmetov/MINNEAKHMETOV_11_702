@@ -73,11 +73,13 @@ public class OptimizatorTest {
         int[] parents = {0, 0, 0, 1, 1, 2, 6, 6, 6, 3, 10, 10, 10, 10, 3, 5, 5, 5, 5, 5};
         int actual = optimizator.resulting(parents, 21, 3);
         Assert.assertEquals(expected, actual);
+
     }
 
     @Test(expected = ArithmeticException.class)
     public void test10() {
         int[] parents = {0, 1, 1};
         int actual = optimizator.resulting(parents, 4, 0);
+
     }
 }

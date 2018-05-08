@@ -6,29 +6,19 @@ import java.util.Date;
 public class Main {
 
     public static void main(String[] args) {
-//        File file = new File("C://Users//razil//Desktop");
-//
-//        File[] files = file.listFiles();
-//
-//        for(int i = 0; i < files.length; i++){
-//            Date date = new Date(files[i].lastModified());
-//
-//            System.out.println(files[i] + "  modified:" +   date);
-//
-//
-//
-//        }
+
+        File file = new File("C://Users//razil//Desktop//");
+        File[] files = file.listFiles();
+        Date date2 = new Date(files[1].lastModified());
+        System.out.println(date2);
         Date date  = new Date();
         System.out.println(date);
 
         Date date1 = new Date();
 
-        date.setDate(date1.getDate() + 1);
-        date.setMinutes(date.getMinutes() - 30);
-        System.out.println(date);
-
-
-
+        date1.setDate(date1.getDate() -1);
+        System.out.println(date1.before(date));
+//
 
     }
 

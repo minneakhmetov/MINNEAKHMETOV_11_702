@@ -1,11 +1,12 @@
 package ru.itis;
 
+import javax.crypto.spec.OAEPParameterSpec;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        Optimizator optimizator = new Optimizator();
+       Optimizator optimizator = new Optimizator();
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("kolichestvo chisel");
@@ -22,6 +23,9 @@ public class Main {
         }
 
         System.out.println("Квадраты " + optimizator.resulting(parents, size, k));
+
+
+        System.out.println(optimizator);
 
     }
 
