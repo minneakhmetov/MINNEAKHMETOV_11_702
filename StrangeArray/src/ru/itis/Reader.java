@@ -11,7 +11,7 @@ public class Reader {
 
     final int TWO = 2;
 
-    String path = "C:\\Users\\razil\\Desktop\\StrangeArray\\src\\ru\\itis\\FILE.TXT";
+    String path = "C:\\Users\\razil\\Desktop\\MINNEAKHMETOV_11_702\\StrangeArray\\src\\ru\\itis\\FILE.TXT";
 
     public int[][] read() {
 
