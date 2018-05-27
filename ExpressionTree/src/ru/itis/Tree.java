@@ -35,11 +35,10 @@ public class Tree {
         } else if (charsArray[i] >= '0' && charsArray[i] <= '9') {
             String number = "";
 
-            for(;; i++){
+            for(;; i++)
                 if(charsArray[i] >= '0' && charsArray[i] <= '9')
                     number += charsArray[i];
                 else break;
-            }
             current.setValue(number);
             add(current.parent, i);
 
