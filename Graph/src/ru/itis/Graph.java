@@ -43,10 +43,11 @@ public class Graph {
     }
 
     // обход в глубину
-    int dfs(int v){
-        int count = 0;
+    boolean isTree(){
+        int edges = 0; //количесвто ребер в графе
+        int vertexes = 0;//количество посещенных вершин
 
-        vertexList[v].setVisited(true); //алгоритм начинает обход с вершины 0
+        vertexList[0].setVisited(true); //алгоритм начинает обход с вершины 0
         stack.push(0); //занесение в стек
 
         while(!stack.isEmpty()){ //пока стек не опустеет
@@ -59,40 +60,11 @@ public class Graph {
             {
                 vertexList[vertex].setVisited(true);//пометка
                 //displayVertex(vertex);//вывод
-                count++;
+                vertexes++; //считаем сколько вершин посетили
                 stack.push(vertex);//занесение в стек
             }
         }
-
-//сброс флагов
-        for(int j = 0; j < vertexCount; j++)//сброс флагов
-            vertexList[j].setVisited(false);
-        return ++count;
-    }
-
-    boolean isConnected(){
-        return vertexCount == dfs(0);
-    }
-
-    boolean dfs(int i, boolean[] col) {
-
-        if (col[i]) {
-            return false;
-        }
-        col[i] = true;
-
-        boolean result = true;
-
-        for (int j = 0; j < vertexCount; ++j) {
-            if (matrix[i][j] != 0) {
-                result &= dfs(j, col);
-            }
-        }
-        return result;
-    }
-
-    boolean isTree() {
-        int edges = 0;
+        //считаем количесвто ребер в графе
         for (int i = 0; i < vertexCount; ++i) {
             for (int j = i + 1; j < vertexCount; ++j) {
                 if (matrix[i][j] != 0) {
@@ -100,23 +72,15 @@ public class Graph {
                 }
             }
         }
-        if (edges != vertexCount - 1) {
+
+        //сброс флагов
+        for(int j = 0; j < vertexCount; j++)
+            vertexList[j].setVisited(false);
+
+        //проверка совпадение посчитанных вершин с фактическим и на необходимое условие дерева
+        if (edges != vertexCount - 1 & ++vertexes != vertexCount) {
             return false;
-        }
-
-        boolean[] col = new boolean[vertexCount];
-
-        dfs(0, col);
-
-        for (int i = 0; i < vertexCount; ++i) {
-            if (!col[i]) {
-                return false;
-            }
         }
         return true;
     }
-
-
-
-
 }

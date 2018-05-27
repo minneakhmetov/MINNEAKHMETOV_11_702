@@ -12,6 +12,6 @@ public class Main {
 	graph.addEdge(0, 2);
 	graph.addEdge(2, 3);
 
-	System.out.println(graph.isConnected() & graph.isTree());
+	System.out.println(graph.isTree());
     }
 }
