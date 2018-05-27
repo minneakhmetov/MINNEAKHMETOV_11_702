@@ -7,6 +7,10 @@ public class Node {
     Node parent;
     private String value;
 
+    public Node(){
+        this.value = "";
+    }
+
     public String getValue() {
         return value;
     }

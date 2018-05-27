@@ -33,18 +33,16 @@ public class Tree {
             add(current.right, ++i);
 
         } else if (charsArray[i] >= '0' && charsArray[i] <= '9') {
-            String number = "";
-
-            for(;; i++)
-                if(charsArray[i] >= '0' && charsArray[i] <= '9')
-                    number += charsArray[i];
-                else break;
-            current.setValue(number);
+            for(;charsArray[i] >= '0' && charsArray[i] <= '9'; i++)
+                current.setValue(current.getValue() + charsArray[i]);
             add(current.parent, i);
 
         } else if (charsArray[i] == ')') {
             if (charsArray.length - i <= 1) return;
             add(current.parent, ++i);
+
+        } else if(charsArray[i] == ' '){
+            add(current, ++i);
 
         } else {
             throw new SyntaxException();
