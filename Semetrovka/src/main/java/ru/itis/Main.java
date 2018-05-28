@@ -40,13 +40,13 @@ public class Main {
     }
 
     private void run() throws Exception {
+        URL url = new URL(new File(this.classFolder).toURI().toString());
+        URLClassLoader loader = URLClassLoader.newInstance(new URL[]{url}, getClass().getClassLoader());
+
         Files
                 .list(Paths.get(this.classFolder))
                 .forEach(file -> {
                     try {
-                        URL url = new URL(new File(this.classFolder).toURI().toString());
-                        URLClassLoader loader = URLClassLoader.newInstance(new URL[]{url}, getClass().getClassLoader());
-
                         String className = file.getFileName().toString().substring(0, file.getFileName().toString().length() - 6);
                         Class klass = loader.loadClass(className);
                         System.out.println("Класс: " + className);
