@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Tree {
 
-    private Node root;
+    Node root;
     private char[] charsArray;
 
     public void add(String string) throws SyntaxException{
@@ -82,6 +82,39 @@ public class Tree {
             level++;
             levels(node.left, level);
             levels(node.right, level);
+        }
+    }
+
+    public void insert(Node node, Node parent){
+        if (parent != null){
+        if(parent.left == null) {
+            parent.left = node;
+            return;
+        } if (parent.right == null) {
+                parent.right = node;
+                return;
+            }
+        } else {
+            root = node;
+            return;
+        }
+    }
+
+    public boolean equals(Tree tree) {
+        Node node = tree.root;
+        Node newNode = root;
+        return equals(node, newNode);
+    }
+
+    private boolean equals(Node node, Node newNode) {
+        try {
+            if (node == null & newNode == null)
+                return true;
+            else if (node.getValue().compareTo(newNode.getValue()) == 0)
+                return equals(node.left, newNode.left) && equals(node.right, newNode.right);
+            return false;
+        } catch (NullPointerException e) {
+            return false;
         }
     }
 
